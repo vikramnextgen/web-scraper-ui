@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Scraper Interface</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Web Scraper</h1>
+            <p>Enter a URL and select scraping options to extract data</p>
+        </header>
+
+        <main>
+            <section class="input-section">
+                <form id="scraperForm">
+                    <div class="form-group">
+                        <label for="url">Website URL:</label>
+                        <input type="url" id="url" required placeholder="https://example.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Select Elements to Scrape:</label>
+                        <div class="checkbox-group">
+                            <label>
+                                <input type="checkbox" name="elements" value="headings" checked> Headings
+                            </label>
+                            <label>
+                                <input type="checkbox" name="elements" value="links" checked> Links
+                            </label>
+                            <label>
+                                <input type="checkbox" name="elements" value="images"> Images
+                            </label>
+                            <label>
+                                <input type="checkbox" name="elements" value="text"> Text Content
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="selector">Custom CSS Selector (optional):</label>
+                        <input type="text" id="selector" placeholder=".article-content, #main-content">
+                    </div>
+
+                    <button type="submit" class="btn-scrape">Start Scraping</button>
+                </form>
+            </section>
+
+            <section class="results-section">
+                <div class="results-header">
+                    <h2>Results</h2>
+                    <div class="controls">
+                        <button id="copyResults" class="btn-secondary">Copy</button>
+                        <button id="downloadResults" class="btn-secondary">Download</button>
+                        <select id="formatSelect">
+                            <option value="json">JSON</option>
+                            <option value="csv">CSV</option>
+                            <option value="text">Plain Text</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="loading-spinner hidden"></div>
+                <div id="results" class="results-container">
+                    <p class="placeholder-text">Scraped data will appear here</p>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Note: Please ensure you have permission to scrape the target website and comply with their robots.txt</p>
+        </footer>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
